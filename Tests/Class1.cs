@@ -51,5 +51,20 @@ namespace Tests
 
             Assert.IsTrue(reponse);
         }
+
+        [Test]
+        public void Test_total_TTC_moins_la_reduction()
+        {
+            bool reponse = false;
+            Calcul calcul = new Calcul();
+            double total = 0;
+            total = calcul.getTotalAvecReduction(20000);
+            if (total == 18000)
+            {
+                reponse = true;
+            }
+
+            Assert.IsTrue(reponse);
+        }
     }
 }
