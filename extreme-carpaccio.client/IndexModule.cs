@@ -21,28 +21,24 @@ namespace xCarpaccio.client
                 }
 
                 var order = this.Bind<Order>();
-                Bill bill = null;
-                if (order.Country == "DE" || order.Country == "FR" || order.Country == "RO" || order.Country == "NL" || order.Country == "LV") 
-                {
-                    Bill unBill = new Bill();
-                    bill = unBill;
-                    Calcul unCalcul = new Calcul();
-                    double unTotal = 0;
-                    double unTotalTTC = 0;
-                    double totalHT = unCalcul.calculTotalHT(order.Prices, order.Quantities);
-                    double tva = unCalcul.getTVA(order.Country);
+                Bill bill = new Bill();
+                Calcul unCalcul = new Calcul();
+                double unTotal = 0;
+                double unTotalTtc = 0;
+                double totalHt = 0;
+                double tva = 0;
+                
+                totalHt = unCalcul.calculTotalHT(order.Prices, order.Quantities);
+                tva = unCalcul.getTVA(order.Country);
+                unTotalTtc = totalHt * tva;
+                unTotal = unCalcul.getTotalAvecReduction(unTotalTtc);
 
-                    unTotalTTC = totalHT * tva;
-                    unTotal = unCalcul.getTotalAvecReduction(unTotalTTC);
+                bill.total = Math.Round(Convert.ToDecimal(unTotal), 2);
 
-                    bill.total = Math.Round(Convert.ToDecimal(unTotal), 2);
-
-                }
-               
                 //TODO: do something with order and return a bill if possible
                 // If you manage to get the result, return a Bill object (JSON serialization is done automagically)
                 // Else return a HTTP 404 error : return Negotiate.WithStatusCode(HttpStatusCode.NotFound);
-                
+
                 return bill;
             };
 
