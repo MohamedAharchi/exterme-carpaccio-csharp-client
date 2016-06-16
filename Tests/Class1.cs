@@ -16,5 +16,19 @@ namespace Tests
         {
             Assert.IsTrue(true);
         }
+        
+        [Test]
+        public void Test_de_la_TVA()
+        {
+            bool reponse = false;
+            var unCalcul = new Calcul();
+            double tva = unCalcul.getTVA("DE");
+            if (tva == 1.20)
+            {
+                reponse = true;
+            }
+
+            Assert.IsTrue(reponse);
+        }
     }
 }

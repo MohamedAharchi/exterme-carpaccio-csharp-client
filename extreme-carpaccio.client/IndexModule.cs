@@ -28,12 +28,11 @@ namespace xCarpaccio.client
                     bill = unBill;
                     Calcul unCalcul = new Calcul();
                     double unTotal = 0;
+                    double unTotalTTC = 0;
                     double totalHT = unCalcul.calculTotalHT(order.Prices, order.Quantities);
-                    
+                    double tva = unCalcul.getTVA(order.Country);
 
-                    
-
-                    unTotal = totalHT * 1.20;
+                    unTotalTTC = totalHT * tva;
 
                     if (unTotal >= 1000 && unTotal < 5000)
                     {
