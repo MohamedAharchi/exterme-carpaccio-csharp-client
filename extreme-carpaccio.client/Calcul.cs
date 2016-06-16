@@ -19,5 +19,18 @@ namespace xCarpaccio.client
             
         }
 
+        public double getTVA(string countrie)
+        {
+            double uneTva = 0;
+            for (int i = 0; i < countries.Length; i++)
+            {
+                if (countries[i] == countrie)
+                {
+                    uneTva = tva[i];
+                }
+            }
+            return uneTva;
+        }
+
     }
 }
