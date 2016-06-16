@@ -6,7 +6,7 @@ namespace xCarpaccio.client
     {
         public decimal total { get; set; }
 
-        public void calculTotal(decimal[] prices, int[] quantities)
+        public double calculTotal(decimal[] prices, int[] quantities)
         {
             double unTotal = 0;
             for (int i = 0; i < prices.Length; i++)
@@ -14,7 +14,7 @@ namespace xCarpaccio.client
                 unTotal = unTotal + (Convert.ToDouble(prices[i])*quantities[i]);
             }
 
-            this.total = Math.Round(Convert.ToDecimal(unTotal), 2);
+            return unTotal;
         }
 
         public void calculTVA(decimal unTotal, double tva)
