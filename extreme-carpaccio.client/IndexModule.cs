@@ -26,13 +26,14 @@ namespace xCarpaccio.client
                 {
                     Bill unBill = new Bill();
                     bill = unBill;
+                    Calcul unCalcul = new Calcul();
                     double unTotal = 0;
-                    for (int i = 0; i < order.Prices.Length; i++)
-                    {
-                        unTotal = unTotal + (Convert.ToDouble(order.Prices[i]) * order.Quantities[i]);
-                    }
+                    double totalHT = unCalcul.calculTotalHT(order.Prices, order.Quantities);
+                    
 
-                    unTotal = unTotal * 1.20;
+                    
+
+                    unTotal = totalHT * 1.20;
 
                     if (unTotal >= 1000 && unTotal < 5000)
                     {

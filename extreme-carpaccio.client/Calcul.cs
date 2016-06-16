@@ -19,6 +19,17 @@ namespace xCarpaccio.client
             
         }
 
+        public double calculTotalHT(decimal[] prices, int[] quantities)
+        {
+            double unTotal = 0;
+            for (int i = 0; i < prices.Length; i++)
+            {
+                unTotal = unTotal + (Convert.ToDouble(prices[i]) * quantities[i]);
+            }
+
+            return unTotal;
+        }
+
         public double getTVA(string countrie)
         {
             double uneTva = 0;
