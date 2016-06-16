@@ -43,5 +43,35 @@ namespace xCarpaccio.client
             return uneTva;
         }
 
+        public double getTotalAvecReduction(double unTotal)
+        {
+            if (unTotal >= 1000 && unTotal < 5000)
+            {
+                unTotal = unTotal - (unTotal * 0.03);
+            }
+
+            else if (unTotal >= 5000 && unTotal < 7000)
+            {
+                unTotal = unTotal - (unTotal * 0.05);
+            }
+
+            else if (unTotal >= 7000 && unTotal < 10000)
+            {
+                unTotal = unTotal - (unTotal * 0.07);
+            }
+
+            else if (unTotal >= 10000 && unTotal < 50000)
+            {
+                unTotal = unTotal - (unTotal * 0.10);
+            }
+
+            else if (unTotal >= 50000)
+            {
+                unTotal = unTotal - (unTotal * 0.15);
+            }
+
+            return unTotal;
+        }
+
     }
 }

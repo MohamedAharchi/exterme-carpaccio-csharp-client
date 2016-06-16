@@ -33,39 +33,12 @@ namespace xCarpaccio.client
                     double tva = unCalcul.getTVA(order.Country);
 
                     unTotalTTC = totalHT * tva;
+                    unTotal = unCalcul.getTotalAvecReduction(unTotalTTC);
 
-                    if (unTotal >= 1000 && unTotal < 5000)
-                    {
-                        unTotal = unTotal - (unTotal*0.03);
-                    }
-
-                    else if (unTotal >= 5000 && unTotal < 7000)
-                    {
-                        unTotal = unTotal - (unTotal * 0.05);
-                    }
-
-                    else if (unTotal >= 7000 && unTotal < 10000)
-                    {
-                        unTotal = unTotal - (unTotal * 0.07);
-                    }
-
-                    else if (unTotal >= 10000 && unTotal < 50000)
-                    {
-                        unTotal = unTotal - (unTotal * 0.10);
-                    }
-
-                    else if (unTotal >= 50000)
-                    {
-                        unTotal = unTotal - (unTotal * 0.15);
-                    }
                     bill.total = Math.Round(Convert.ToDecimal(unTotal), 2);
 
                 }
-
-
-                /*bill.calculTotal(order.Prices, order.Quantities);
-                Calcul unCalcul = new Calcul();
-                //double tva = unCalcul.getTVA();*/
+               
                 //TODO: do something with order and return a bill if possible
                 // If you manage to get the result, return a Bill object (JSON serialization is done automagically)
                 // Else return a HTTP 404 error : return Negotiate.WithStatusCode(HttpStatusCode.NotFound);
